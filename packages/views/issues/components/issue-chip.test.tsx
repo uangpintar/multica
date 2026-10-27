@@ -88,6 +88,13 @@ describe("IssueChip", () => {
       .toHaveClass("min-w-0", "truncate");
   });
 
+  it("shows the identifier without the issue title", () => {
+    render(<IssueChip issueId="issue-1" />);
+
+    expect(screen.getByText("MUL-3405")).toBeInTheDocument();
+    expect(screen.queryByText(/A very long issue title/)).not.toBeInTheDocument();
+  });
+
   it("paints a custom status with its catalog color instead of the category token", () => {
     render(<IssueChip issueId="issue-2" />);
 

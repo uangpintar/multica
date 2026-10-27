@@ -375,17 +375,6 @@
   white-space: nowrap;
 }
 
-/* Mention chips truncate inside a cell instead of widening its column. Column
-   widths start from each cell's min-content, where the chip's percentage
-   max-width does not apply, so its whole title became the column's minimum
-   and squeezed every other column. As a grid whose title track may shrink to
-   zero, the chip asks only for its icon and identifier. */
-.rich-text-editor :is(td, th) span.issue-mention:has(> :nth-child(3)) {
-  display: inline-grid;
-  grid-template-columns: auto auto minmax(0, max-content);
-  max-width: 18rem;
-}
-
 .rich-text-editor :is(td, th) span.project-chip {
   display: inline-grid;
   grid-template-columns: auto minmax(0, max-content);

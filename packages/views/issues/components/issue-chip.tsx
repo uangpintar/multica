@@ -10,18 +10,15 @@ import { StatusIcon } from "./status-icon";
 
 /**
  * Compact, presentation-only representation of an issue —
- * `<StatusIcon> <identifier> <title>`, bordered, with the title truncating to
- * an ellipsis once the chip hits its width cap.
+ * `<StatusIcon> <identifier>`, bordered. The title is deliberately not shown:
+ * a chip sits inside a line of prose, and a title next to the identifier made
+ * reference-dense text hard to scan. `IssueHoverCard` shows the title and the
+ * rest of the detail on hover.
  *
- * The cap is `min(18rem, 100%)` — two limits doing two different jobs:
- *   - `18rem` bounds the chip against the *content*, so a long title can never
- *     grow the chip wide enough to dominate a line of prose. Without it a chip
- *     is an atomic inline box that wraps to the next line as a unit whenever it
- *     doesn't fit at the current position, leaving a ragged gap on the line
- *     above — the reference-dense-prose problem from #6732.
- *   - `100%` bounds it against the *container*, keeping the chip inside narrow
- *     parents such as a chat bubble.
- * `ProjectChip` carries the identical cap; the two must not drift.
+ * The cap is `min(18rem, 100%)` — it keeps the chip inside narrow parents such
+ * as a chat bubble, and truncates an unresolved fallback label that is longer
+ * than the container. `ProjectChip` carries the identical cap; the two must
+ * not drift.
  *
  * The cap lives here (single source of truth) — wrappers must NOT add their own
  * flex container around it, or a percentage cap gets dropped during the
@@ -95,10 +92,9 @@ export function IssueChip({
         icon={statusIconOf(issue.status)}
         className="h-3.5 w-3.5 shrink-0"
       />
-      <span className="font-medium text-muted-foreground shrink-0">
+      <span className="min-w-0 truncate font-medium text-muted-foreground">
         {issue.identifier}
       </span>
-      <span className="min-w-0 truncate text-foreground">{issue.title}</span>
     </span>
   );
 }
