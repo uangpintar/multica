@@ -23,7 +23,7 @@ import { CodeBlockIframe } from "../code-block-iframe";
 // keystroke causes the iframe to re-load and flicker.
 const PREVIEW_DEBOUNCE_MS = 200;
 
-const HTML_PREVIEW_HEIGHT_PX = 480;
+const HTML_PREVIEW_HEIGHT_PX = 800;
 
 function CodeBlockView({ node }: NodeViewProps) {
   const { t } = useT("editor");
@@ -93,7 +93,7 @@ function CodeBlockView({ node }: NodeViewProps) {
               key={reloadKey}
               html={debouncedHtml}
               title={t(($) => $.code_block.html_preview)}
-              heightClassName={fullscreen ? "h-full" : "h-[480px]"}
+              heightClassName={fullscreen ? "h-full" : "h-[800px]"}
               className={fullscreen ? "rounded-none border-0" : undefined}
             />
           </HtmlPreviewSurface>
