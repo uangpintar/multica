@@ -1249,7 +1249,7 @@ export function IssueDetailSkeleton({
         <div className="flex-1 overflow-y-auto [scrollbar-gutter:stable_both-edges]">
           {/* Gutters match the loaded column exactly (see its comment), so the
               skeleton doesn't reflow sideways when real content mounts. */}
-          <div className="mx-auto w-full max-w-4xl px-3 py-6 space-y-6 md:px-8 md:py-8">
+          <div className="mx-auto w-full max-w-4xl px-3 py-6 space-y-6 md:px-4 md:py-6">
             <Skeleton className="h-8 w-3/4" />
             <div className="space-y-2">
               <Skeleton className="h-4 w-full" />
@@ -3301,7 +3301,7 @@ export function IssueDetail({ issueId, onDelete, onDone, defaultSidebarOpen = tr
             "mx-auto w-full",
             // The peek is already a narrow column, so it takes a tighter gutter
             // and never reaches the chat launcher's corner (see IssuePeekHost).
-            isPeek ? "px-6 py-5" : "max-w-4xl px-3 py-6 max-md:pb-chat-launcher md:px-8 md:py-8",
+            isPeek ? "px-6 py-5" : "max-w-4xl px-3 py-6 max-md:pb-chat-launcher md:px-4 md:py-6",
           )}
         >
           <IssueDuplicateBanner
